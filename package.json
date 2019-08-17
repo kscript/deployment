@@ -2,14 +2,22 @@
   "name": "deployment",
   "version": "0.1.0",
   "private": true,
+  "author": "kscript",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   },
+  "main": "background.js",
   "dependencies": {
+    "chai-as-promised": "^7.1.1",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
@@ -29,11 +37,20 @@
     "@vue/cli-service": "^3.10.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "chai": "^4.1.2",
+    "electron": "^6.0.0",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
+    "vue-cli-plugin-electron-builder": "^1.4.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kscript/deployment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kscript/deployment/issues"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
