@@ -24,7 +24,8 @@
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "webpack-dev-server": "^3.7.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",
@@ -38,12 +39,72 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "chai": "^4.1.2",
     "electron": "^6.0.0",
+    "electron-updater": "^4.1.2",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
     "vue-cli-plugin-electron-builder": "^1.4.0",
     "vue-template-compiler": "^2.6.10"
+  },
+  "build": {
+    "productName": "deployment",
+    "appId": "com.kscript.deployment",
+    "directories": {
+      "output": "build"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "kscript",
+        "host": "api.github.com",
+        "repo": "deployment",
+        "token": "6767d8933c4490fdcbb95971f28331a23ef779b4",
+        "vPrefixedTagName": false,
+        "releaseType": "release",
+        "publishAutoUpdate": true
+      }
+    ],
+    "files": [
+      "dist/electron/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "deleteAppDataOnUninstall": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true,
+      "differentialPackage": true
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "mac": {
+      "icon": "dist/icons/icon.icns",
+      "artifactName": "${productName}.setup.${version}.${ext}"
+    },
+    "win": {
+      "icon": "dist/icons/icon.ico",
+      "artifactName": "${productName}.setup.${version}.${ext}"
+    },
+    "linux": {
+      "icon": "dist/icons",
+      "artifactName": "${productName}.setup.${version}.${ext}"
+    }
   },
   "repository": {
     "type": "git",
