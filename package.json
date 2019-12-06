@@ -59,7 +59,7 @@
         "owner": "kscript",
         "host": "api.github.com",
         "repo": "deployment",
-        "token": "6767d8933c4490fdcbb95971f28331a23ef779b4",
+        "token": "1e3792cfc0181a59d32735e39531dd16a358ef20",
         "vPrefixedTagName": false,
         "releaseType": "release",
         "publishAutoUpdate": true
@@ -125,5 +125,6 @@
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "__npminstall_done": false
 }
